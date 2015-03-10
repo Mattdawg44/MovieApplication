@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title>Movies</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/movie.css">
+        <script src="script/movies.js"></script>
+        <script src="script/moviesort.js"></script>
+        <script src="script/moviephotos.js"></script>
+        <script src="script/general.js"></script>
+        <script src="script/moviesearch.js"></script>
+    </head>
+    
+    
+    
+    <body onload="init()">
+        
+        <div class="top">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul class="menu">
+                                <li>
+                                    <a href>Home</a>
+                                </li>
+                                <li>
+                                    <a href>Manage</a>
+                                    
+                                        <ul>
+                                            <a href>Add</a>
+                                        </ul>
+                                        <ul>
+                                            <a href>Search</a>
+                                        </ul>
+                                    
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <!--<div class="searchbar"></div>-->
+        <input class="text" id="field" type="text" value="Search for movies here..."onfocus="if (this.value == 'Search for movies here…') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search for movies here…';}">
+        <button onclick="search()"> Search </button>
+        <div id="suggestions_box" class="suggestions" ></div>
+       
+        <div class="icons">
+            <img id="list_icon" onclick="make_list()" src="data/list.jpg">
+            <img id="grid_icon" onclick="make_grid()" src="data/grid_pressed.jpg">
+
+            <select id="combo_box" onchange="sort()">
+                <option> Sort By</option>
+                <option> Rating </option>
+                <option> Year </option>
+            </select>
+        </div>
+        
+        
+        <div id="photos" class="grid"></div> 
+            <!--
+            <div class="movie">
+            <div class="year">1999</div>
+            <div class="title">Blue Streak</div>
+            <img src="images/blue-streak.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: Martin Lawrence, Luke Wilson</div>
+            <div class="description">Blue Streak is a 1999 American buddy cop comedy film directed by Les 
+                Mayfield and starring Martin Lawrence, Luke Wilson, Dave Chappelle, Peter Greene, 
+                Nicole Ari Parker and William Forsythe. The film was shot on location in California. 
+                The prime shooting spot was Sony Pictures Studios which is located in Culver City, California.
+            </div>
+            <div class="rating">Rating:<b>4/5</b></div>
+            <img class="HD" src="images/HD.png">           
+            </div>
+            
+            <div class="movie">
+            <div class="year">1993</div>
+            <div class="title">Mrs. Doubtfire</div>
+            <img src="images/doubt_fire.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: Robin Williams, Sally Field</div>
+            <div class="description">Mrs. Doubtfire is a 1993 American comedy film starring Robin Williams 
+                (who also served as co-producer) and Sally Field and based on the novel Alias Madame Doubtfire 
+                by Anne Fine. It was directed by Chris Columbus and distributed by 20th Century Fox. It won the 
+                Academy Award for Best Makeup.</div>
+            <div class="rating">Rating:<b>5/5</b></div>
+            <img class="SD" src="images/HD.png">
+            </div>
+            
+            <div class="movie">
+            <div class="year">2012</div>
+            <div class="title">Life Of Pi</div>
+            <img src="images/life_of_pi.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: Suraj Sharma, Irrfan Khan</div>
+            <div class="description">Life of Pi is a Canadian fantasy adventure novel by Yann Martel published in 2001. 
+                The protagonist, Piscine Molitor "Pi" Patel, an Indian boy from Pondicherry, explores issues of 
+                spirituality and practicality from an early age. He survives 227 days after a shipwreck while stranded 
+                on a lifeboat in the Pacific Ocean with a Bengal tiger named Richard Parker.</div>
+            <div class="rating">Rating: <b>5/5</b></div>
+            <img class="HD" src="images/HD.png">
+            </div>
+            
+            <div class="movie">
+            <div class="year">2010</div>
+            <div class="title">The Pacific</div>
+            <img src="images/pacific.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: James Badge Dale, Joseph Mazzello</div>
+            <div class="description">The Pacific is a 2010 television series produced by HBO, Seven Network Australia, 
+                Sky Movies, Playtone and DreamWorks that premiered in the United States on 14 March 2010.</div>
+            <div class="rating">Rating: <b>3/5</b></div>
+            <img class="HD" src="images/HD.png">
+            </div>
+            
+            <div class="movie">
+            <div class="year">2011</div>
+            <div class="title">Rio</div>
+            <img src="images/rio.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: Jesse Eisenberg, Leslie Mann</div>
+            <div class="description">Rio is a 2011 American 3D computer-animated musical adventure-comedy film produced by Blue 
+                Sky Studios and directed by Carlos Saldanha. The title refers to the Brazilian city of Rio de Janeiro, where 
+                the film is set. </div>
+            <div class="rating">Rating: <b>4/5</b></div>
+             <img class="HD" src="images/HD.png">
+            </div> 
+            
+            <div class="movie">
+            <div class="year">2005</div>
+            <div class="title">An Unfinished Life</div>
+            <img src="images/unfinished_life.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring: Robert Redford, Jennifer Lopez</div>
+            <div class="description">An Unfinished Life is a 2005 drama film directed by Swedish director Lasse Hallström, 
+                and based on the Mark Spragg novel of the same name. The film stars Robert Redford, Jennifer Lopez, 
+                and Morgan Freeman. </div>
+            <div class="rating">Rating: <b>3/5</b></div>
+             <img class="SD" src="images/HD.png">
+            </div>
+            
+            <div class="movie">
+            <div class="year">2012</div>
+            <div class="title">The Woman in Black</div>
+            <img src="images/woman_in_black.jpg">
+            <div class="title_background"></div>
+            <div class="starting">Starring:  Daniel Radcliffe, Janet McTeer</div>
+            <div class="description">England, 1941 With London in the midst of the blitz, two teachers evacuate a group of 
+                school children to the abandoned Eel Marsh House. Seeking safety from the bombs in the remote coastal location, 
+                the group instead find themselves facing an evil far more frightening when their arrival awakens the 
+                Woman in Black.</div>
+            <div class="rating">Rating: <b>5/5</b></div>
+             <img class="HD" src="images/HD.png">
+            </div>  
+            -->
+        
+        
+    </body>
+</html>
